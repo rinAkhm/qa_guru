@@ -14,7 +14,7 @@ public class MyFirstTest {
 
     @Test
     public void firstTest(){
-        String date = "20.09.2023";
+        String date = "20.09.2033";
         LocalDate parseDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         assertEquals(parseDate.getDayOfWeek(), DayOfWeek.FRIDAY );
     }
