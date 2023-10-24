@@ -9,20 +9,17 @@ import java.time.format.DateTimeFormatter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyFirstTest {
-
-
-
+private String date = "20.09.2033";
+    
     @Test
     public void firstTest(){
-        String date = "20.09.2033";
         LocalDate parseDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        assertEquals(parseDate.getDayOfWeek(), DayOfWeek.FRIDAY );
+        assertEquals(parseDate.getDayOfWeek(), DayOfWeek.FRIDAY);
     }
 
     @Test
     public void secondTest(){
-        String date = "20.09.2023";
         LocalDate parseDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        assertEquals(parseDate.getDayOfWeek(), DayOfWeek.FRIDAY );
+        assertEquals(parseDate.getDayOfWeek(), DayOfWeek.SUNDAY);
     }
 }
