@@ -11,6 +11,6 @@ public abstract class BaseTest {
         Configuration.browser = "chrome";
         Configuration.baseUrl = "https://github.com/";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 5000; // default 4000
+        Configuration.timeout = 10000; // сильно тормозит интернет дома
     }
 }
