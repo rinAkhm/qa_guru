@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class SearchSoftAssertionsTest extends BaseTest {
 
-    String expected = String.join("@ExtendWith({SoftAssertsExtension.class})\n" +
+    private final static String expected = String.join("@ExtendWith({SoftAssertsExtension.class})\n" +
             "class Tests {\n" +
             "  @Test\n" +
             "  void test() {\n" +
@@ -24,7 +24,7 @@ public class SearchSoftAssertionsTest extends BaseTest {
 
     @Test
     void findExampleSoftAssertionsWithJunit5Test() {
-        open("/");
+        open("");
         $("[placeholder='Search or jump to...']").click();
         $("#query-builder-test").setValue("selenide").pressEnter();
         $("[data-testid='results-list']").find("a").click();
