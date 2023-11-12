@@ -11,20 +11,14 @@ import static qa.guru.TableResultData.*;
 
 
 public class DemoQaRegisterTest extends BaseTest {
-    private RegistrationPage registrationPage;
-    private Register data;
-
-    @BeforeEach
-    void setUp() {
-        registrationPage = new RegistrationPage();
-        registrationPage.openRegistrationPage("/automation-practice-form");
-        data = new Register();
-
-    }
+    RegistrationPage registrationPage = new RegistrationPage();
+    Register data = new Register();
 
     @Test
     void registerStudentWriteInFullFieldTest() {
+
         registrationPage
+                .openRegistrationPage("/automation-practice-form")
                 .setFirstName(data.getFirstname())
                 .setLastName(data.getLastname())
                 .setEmail(data.getEmail())
@@ -58,6 +52,7 @@ public class DemoQaRegisterTest extends BaseTest {
     @Test
     void registerStudentWriteInRequiredFieldTest() {
         registrationPage
+                .openRegistrationPage("/automation-practice-form")
                 .setFirstName(data.getFirstname())
                 .setLastName(data.getLastname())
                 .choiceGender(data.getGender())
@@ -77,6 +72,7 @@ public class DemoQaRegisterTest extends BaseTest {
     @Test
     void registerStudentWriteInEmptyFiledTest() {
         registrationPage
+                .openRegistrationPage("/automation-practice-form")
                 .submitForm()
                 .checkNotOpenFormResult();
     }

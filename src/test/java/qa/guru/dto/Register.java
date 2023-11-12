@@ -4,9 +4,6 @@ import com.github.javafaker.Faker;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 
@@ -102,20 +99,6 @@ public class Register {
 
     public String getBirthdate() {
         return birthdate;
-    }
-
-    @Override
-    public String toString() {
-        return "qa.guru.dto.Register{" +
-                "subject=" + Arrays.toString(subject) +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", email='" + email + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthdate='" + birthdate + '\'' +
-                ", hobbies='" + hobbies + '\'' +
-                '}';
     }
 }
 
