@@ -17,10 +17,10 @@ import static qa.guru.TableResultData.TITLE;
 
 public class RegistrationPage {
 
-    private final static SelenideElement inputFirstname = $x("//input[@placeholder='First Name']"),
-            inputLastname = $x("//input[@placeholder='Last Name']"),
-            inputEmail = $x("//input[@id='userEmail']"),
-            inputPhone = $x("//input[@placeholder='Mobile Number']"),
+    private final static SelenideElement inputFirstname = $("#firstName"),
+            inputLastname = $("#lastName"),
+            inputEmail = $("#userEmail"),
+            inputPhone = $("#userNumber"),
             buttonImage = $("#uploadPicture"),
             textAddress = $("#currentAddress"),
             fieldState = $("#state"),

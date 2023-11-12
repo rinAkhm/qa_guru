@@ -24,7 +24,6 @@ public class DemoQaRegisterTest extends BaseTest {
 
     @Test
     void registerStudentWriteInFullFieldTest() {
-        data = new Register("", "");
         registrationPage
                 .setFirstName(data.getFirstname())
                 .setLastName(data.getLastname())
@@ -46,6 +45,8 @@ public class DemoQaRegisterTest extends BaseTest {
                 .checkFormResult(STUDENT_EMAIL, data.getEmail())
                 .checkFormResult(GENDER, data.getGender())
                 .checkFormResult(MOBILE, data.getMobile())
+                .checkFormResult(DATE_OF_BIRTH, Arrays.stream(data.getBirthdate().split("^[0-9]{2}.\\w*"))
+                        .reduce((s1, s2) -> String.join(",", s1.trim(), s2.trim())).get())
                 .checkFormResult(SUBJECTS, Arrays.stream(data.getSubject())
                         .reduce((s1, s2) -> String.join(", ", s1, s2)).get())
                 .checkFormResult(HOBBIES, data.getHobbies())
@@ -56,7 +57,6 @@ public class DemoQaRegisterTest extends BaseTest {
 
     @Test
     void registerStudentWriteInRequiredFieldTest() {
-        data = new Register("", "");
         registrationPage
                 .setFirstName(data.getFirstname())
                 .setLastName(data.getLastname())
@@ -69,7 +69,9 @@ public class DemoQaRegisterTest extends BaseTest {
                 .checkFormResult(STUDENT_NAME,
                         String.join(" ", data.getFirstname(), data.getLastname()))
                 .checkFormResult(GENDER, data.getGender())
-                .checkFormResult(MOBILE, data.getMobile());
+                .checkFormResult(MOBILE, data.getMobile())
+                .checkFormResult(DATE_OF_BIRTH, Arrays.stream(data.getBirthdate().split("^[0-9]{2}.\\w*"))
+                        .reduce((s1, s2) -> String.join(",", s1.trim(), s2.trim())).get());
     }
 
     @Test
