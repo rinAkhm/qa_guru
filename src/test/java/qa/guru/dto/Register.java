@@ -3,6 +3,7 @@ package qa.guru.dto;
 import com.github.javafaker.Faker;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -40,9 +41,8 @@ public class Register {
     }
 
     private String getBirthDate() {
-        LocalDate birthDate = LocalDate.from(LocalDate.now().minusYears(10));
-        return birthDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH));
-
+        var date = faker.date().birthday();
+        return new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).format(date);
     }
 
     public String getGender() {
