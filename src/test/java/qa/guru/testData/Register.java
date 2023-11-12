@@ -1,4 +1,4 @@
-package qa.guru.dto;
+package qa.guru.testData;
 
 import com.github.javafaker.Faker;
 
@@ -28,7 +28,7 @@ public class Register {
         this.lastname = faker.name().lastName();
         this.email = faker.internet().emailAddress(this.firstname);
         this.birthdate = getBirthDate();
-        this.hobbies = faker.options().nextElement(new String[]{"Sports", "Reading", "Music"});
+        this.hobbies = faker.options().option("Sports", "Reading", "Music"); //nextElement();
         this.address = faker.address().streetAddress();
         this.image = new File("src/test/resources/hobbie.jpg");
         this.mobile = String.format("9%s", faker.phoneNumber().subscriberNumber(9));

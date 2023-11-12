@@ -1,8 +1,7 @@
 package qa.guru;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import qa.guru.dto.Register;
+import qa.guru.testData.Register;
 import qa.guru.pages.RegistrationPage;
 
 import java.util.Arrays;
