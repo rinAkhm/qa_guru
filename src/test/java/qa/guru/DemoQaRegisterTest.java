@@ -18,7 +18,7 @@ public class DemoQaRegisterTest extends BaseTest {
     void setUp() {
         registrationPage = new RegistrationPage();
         registrationPage.openRegistrationPage("/automation-practice-form");
-        data = new Register("", "");
+        data = new Register();
 
     }
 
@@ -36,7 +36,7 @@ public class DemoQaRegisterTest extends BaseTest {
                 .uploadPicture(data.getImage())
                 .setAddress(data.getAddress())
                 .choiceState(data.getState())
-                .choiceCity(data.getCity(data.getState()))
+                .choiceCity(data.getCity())
                 .submitForm();
 
         registrationPage
@@ -52,7 +52,7 @@ public class DemoQaRegisterTest extends BaseTest {
                 .checkFormResult(HOBBIES, data.getHobbies())
                 .checkFormResult(PICTURE, data.getImage().getName())
                 .checkFormResult(ADDRESS, data.getAddress())
-                .checkFormResult(STATE_AND_CITY, String.join(" ", data.getState(), data.getCity(data.getState())));
+                .checkFormResult(STATE_AND_CITY, String.join(" ", data.getState(), data.getCity()));
     }
 
     @Test
