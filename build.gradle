@@ -9,7 +9,7 @@ version = '1.0-SNAPSHOT'
 
 allure {
     report {
-            version.set('2.24.0')
+        version.set('2.24.0')
     }
     adapter {
         aspectjWeaver.set(true)
@@ -21,6 +21,7 @@ allure {
     }
 }
 
+
 repositories {
     mavenCentral()
 }
@@ -30,12 +31,29 @@ compileTestJava {
 }
 
 dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter:5.10.0')
-    testImplementation('io.qameta.allure:allure-selenide:2.24.0')
-    testImplementation('com.codeborne:selenide:6.19.1')
-    testImplementation('org.slf4j:slf4j-simple:2.0.7')
+    testImplementation(
+            "com.github.javafaker:javafaker:1.0.2",
+            "io.qameta.allure:allure-selenide:2.24.0",
+            "com.codeborne:selenide:6.19.1",
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            'org.slf4j:slf4j-simple:2.0.7'
+    )
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
+
+tasks.register('ui_test', Test) {
+    useJUnitPlatform {
+        includeTags("ui")
+    }
+}
+
