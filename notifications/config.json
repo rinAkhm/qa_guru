@@ -1,0 +1,18 @@
+{
+  "base": {
+    "logo": "",
+    "project": "",
+    "environment": "",
+    "comment": "",
+    "reportLink": "",
+    "language": "en",
+    "allureFolder": "",
+    "enableChart": true,
+    "durationFormat": "HH:mm:ss.SSS"
+  },
+  "telegram": {
+    "token": "",
+    "chat": "",
+    "replyTo": ""
+  }
+}
