@@ -37,7 +37,7 @@ public class RegistrationPage {
     private final static ElementsCollection multiBoxHobbies = $$("label[for*=hobbies-checkbox]");
     private final static ElementsCollection boxGender = $$("label[for*=gender-radio]");
 
-    @Step("Открываем страницу по адресу {path}")
+    @Step("Open page by address {path}")
     public RegistrationPage openRegistrationPage(String path){
         open(path);
         executeJavaScript("$('#fixedban').remove()");
@@ -45,37 +45,37 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Вводим имя '{firstName}'")
+    @Step("Fill firstname '{firstName}'")
     public RegistrationPage setFirstName(String firstName) {
         inputFirstname.sendKeys(firstName);
         return this;
     }
 
-    @Step("Вводим фамилию '{lastName}'")
+    @Step("Fill lastname'{lastName}'")
     public RegistrationPage setLastName(String lastName) {
         inputLastname.sendKeys(lastName);
         return this;
     }
 
-    @Step("Вводим фамилию email='{email}'")
+    @Step("Fill email ='{email}'")
     public RegistrationPage setEmail(String email) {
         inputEmail.sendKeys(email);
         return this;
     }
 
-    @Step("Выбираем принадженость к полу '{gender}'")
+    @Step("Choice gender type '{gender}'")
     public RegistrationPage choiceGender(String gender) {
         boxGender.findBy(text(gender)).click();
         return this;
     }
 
-    @Step("Вводим номер телефона '{mobile}'")
+    @Step("Fill mobile number '{mobile}'")
     public RegistrationPage setMobile(String mobile) {
         inputPhone.setValue(mobile);
         return this;
     }
 
-    @Step("Заполняем дату рождения '{birthdate}'")
+    @Step("Fill birthdate '{birthdate}'")
     public RegistrationPage setDateOfBirth(String birthdate) {
         CalendarComponent calendar = new CalendarComponent();
         inputBirthdate.click();
@@ -83,51 +83,51 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Заполняем предметы '{subjects}'")
+    @Step("Fill subjects '{subjects}'")
     public RegistrationPage setSubjects(String[] subjects) {
         Arrays.stream(subjects).forEach(e -> inputSubject.val(e).pressEnter());
         return this;
     }
 
-    @Step("Заполняем хобби '{hobbies}'")
+    @Step("Fill hobbies '{hobbies}'")
     public RegistrationPage setMultiBoxHobbies(String hobbies) {
         multiBoxHobbies.findBy(Condition.text(hobbies)).click();
         return this;
     }
 
-    @Step("Загружаем фото")
+    @Step("Upload photo")
     public RegistrationPage uploadPicture(File file){
         buttonImage.uploadFile(file);
         return this;
     }
 
-    @Step("Заполняем адрес проживания '{address}'")
+    @Step("Fill address registration '{address}'")
     public RegistrationPage setAddress(String address) {
         textAddress.setValue(address);
         return this;
     }
 
-    @Step("Заполняем государство '{state}'")
+    @Step("Fill state '{state}'")
     public RegistrationPage choiceState(String state) {
         fieldState.click();
         selectState.val(state).pressEnter();
         return this;
     }
 
-    @Step("Заполняем город '{city}'")
+    @Step("Fill city '{city}'")
     public RegistrationPage choiceCity(String city) {
         fieldCity.click();
         selectCity.val(city).pressEnter();
         return this;
     }
 
-    @Step("Нажимаем кнопку заполнить форму")
+    @Step("Click  button send form")
     public RegistrationPage submitForm() {
         btnSubmit.hover().click();
         return this;
     }
 
-    @Step("Проверка заполнения поля {label} с содержимым '{value}'")
+    @Step("Expected field {label} with value '{value}'")
     public RegistrationPage checkFormResult(String label, String value) {
         SubmittedFormComponent submittedFormComponent = new SubmittedFormComponent();
         titleFormResult.should(visible, text(TITLE));
@@ -135,7 +135,7 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Проверка, что при не заполнении обязательных поле форма с результатом не открылась")
+    @Step("Expected when fill required field should be open table result")
     public RegistrationPage checkNotOpenFormResult() {
         boolean isTableResult = titleFormResultElements.size() == 0;
         Assertions.assertTrue(isTableResult, "Open table result without input data");
